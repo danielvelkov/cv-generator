@@ -1,4 +1,22 @@
+/* Root styling */
 #root {
-  margin: 0 auto;
   padding: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+#root > aside {
+  flex: 1;
+}
+
+#root > main {
+  color: black;
+  padding: 1em;
+  background-color: white;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
 }
