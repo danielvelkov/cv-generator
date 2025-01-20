@@ -10,6 +10,7 @@ export default function GeneralInfoSection({
   personalPageURL,
   // imageURL,
 }) {
+  if (!firstName && !lastName) return <></>;
   const fullName = firstName + ' ' + lastName;
   return (
     <>

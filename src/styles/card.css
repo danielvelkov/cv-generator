@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 1em;
   padding: 1em;
-  border-radius: 1em;
-  box-shadow: rgba(255, 255, 255, 0.20) 0px 5px 25px;
+  border-radius: 0.5em;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 25px;
 }
 
 .card-title {
