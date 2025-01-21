@@ -1,7 +1,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1em;
 }
 
 form > label {
@@ -9,6 +9,10 @@ form > label {
   flex-direction: column;
 }
 
-label > textarea {
+label > input,
+textarea {
   font: inherit;
+  font-weight: lighter;
+  padding: 0.3rem;
+  border-radius: 0.5em;
 }

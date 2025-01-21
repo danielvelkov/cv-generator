@@ -1,0 +1,25 @@
+.accordion > .card-title {
+  cursor: pointer;
+}
+
+.accordion > input[type='checkbox'] {
+  appearance: none;
+  position: fixed;
+
+  & ~ .content {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &:checked ~ .content {
+    max-height: 100%;
+  }
+}
+
+.accordion-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  align-items: baseline;
+}

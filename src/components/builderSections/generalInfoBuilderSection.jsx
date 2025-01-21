@@ -1,14 +1,12 @@
-import { useState } from 'react';
 import '../../styles/inputSection.css';
-import Card from '../card';
 export default function GeneralInfoBuilderSection({
   generalInfo,
   handleChange,
   handleSubmit,
+  handleRemove,
 }) {
-  const [isAdded, setIsAdded] = useState(false);
   return (
-    <Card>
+    <>
       <form onSubmit={handleSubmit}>
         {' '}
         <label>
@@ -63,7 +61,7 @@ export default function GeneralInfoBuilderSection({
             onChange={handleChange}
           />{' '}
         </label>{' '}
-        {/* <label>
+        <label>
           {' '}
           GitHub URL:{' '}
           <input
@@ -73,7 +71,7 @@ export default function GeneralInfoBuilderSection({
             onChange={handleChange}
           />{' '}
         </label>{' '}
-        <label>
+        {/* <label>
           {' '}
           Image URL:{' '}
           <input
@@ -82,7 +80,7 @@ export default function GeneralInfoBuilderSection({
             value={generalInfo.imageURL}
             onChange={handleChange}
           />{' '}
-        </label>{' '}
+        </label>{' '} */}
         <label>
           {' '}
           Personal Page URL:{' '}
@@ -102,9 +100,10 @@ export default function GeneralInfoBuilderSection({
             value={generalInfo.linkedInURL}
             onChange={handleChange}
           />{' '}
-        </label>{' '} */}
-        <button type="submit">Submit</button>{' '}
+        </label>{' '}
+        <button type="submit">Submit</button>
+        <button onClick={handleRemove}>Clear</button>
       </form>
-    </Card>
+    </>
   );
 }

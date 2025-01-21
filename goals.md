@@ -17,7 +17,7 @@ When they submit, the section will be displayed appropriately in the CV
 A section's submission can be skipped but the order of the CV should remain like this:
 
 1. General info
-2. Eduction
+2. Education
 3. Work
 
 When the page is loaded, Each available section for adding will be presented in a list next to the empty CV.

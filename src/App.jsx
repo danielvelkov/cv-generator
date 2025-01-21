@@ -4,49 +4,77 @@ import './App.css';
 import Card from './components/card';
 import GeneralInfoSection from './components/CVsections/generalInfoSection';
 import GeneralInfoBuilderSection from './components/builderSections/generalInfoBuilderSection';
+import Accordion from './components/accordion';
+
+const InputSectionTypes = {
+  GeneralInfo: 'GeneralInfo',
+  Education: 'Education',
+  Work: 'Work',
+};
 
 function App() {
-  const [generalInfo, setGeneralInfo] = useState({
-    firstName: '',
-    lastName: '',
-    summary: '',
-    email: '',
-    phone: '',
-    githubURL: '',
-    imageURL: '',
-    personalPageURL: '',
-    linkedInURL: '',
+  const [cvData, setCvData] = useState({
+    generalInfo: { ...johnDoe.generalInfo },
+    education: [],
+    work: [],
   });
 
-  function GenerateDefaultCV() {
-    setGeneralInfo({ ...johnDoe.generalInfo });
-  }
+  const [activeSectionId, setActiveSectionId] = useState(undefined);
 
-  const handleGeneralInfoChange = (e) => {
-    const { name, value } = e.target;
-    setGeneralInfo((prevInfo) => ({ ...prevInfo, [name]: value }));
+  const generateDefaultCV = () => {
+    setCvData((prev) => ({ ...prev, generalInfo: johnDoe.generalInfo }));
   };
 
-  const handleGeneralInfoSubmit = (e) => {
-    e.preventDefault();
-    console.log(generalInfo);
+  const handleSelect = (id) => {
+    setActiveSectionId((prevId) => (prevId === id ? undefined : id));
+  };
+
+  const handleChange = (section, data) => {
+    setCvData((prev) => ({
+      ...prev,
+      [section]: { ...prev[section], [data.target.name]: data.target.value },
+    }));
+  };
+
+  const handleSubmit = (section) => {
+    console.log(cvData[section]);
+  };
+
+  const handleRemove = (section) => {
+    const clone = { ...cvData[section] };
+    Object.keys(clone).forEach((key) => {
+      clone[key] = '';
+    });
+    setCvData((prev) => ({
+      ...prev,
+      [section]: clone,
+    }));
   };
 
   return (
     <>
       <aside>
-        <Card title={'CV Generator'}>
-          <p>Generate your CV, by adding sections.</p>
-          <button onClick={GenerateDefaultCV}>Generate example CV</button>
+        <Card title="CV Generator">
+          <p>
+            Generate your CV. <br></br> One section at a time.
+          </p>
+          <button onClick={generateDefaultCV}>Generate example CV</button>
         </Card>
-        <GeneralInfoBuilderSection
-          generalInfo={generalInfo}
-          handleChange={handleGeneralInfoChange}
-          handleSubmit={handleGeneralInfoSubmit}
-        ></GeneralInfoBuilderSection>
+        <Accordion
+          title="General Info"
+          handleSelect={() => handleSelect(InputSectionTypes.GeneralInfo)}
+          isExpanded={activeSectionId === InputSectionTypes.GeneralInfo}
+        >
+          <GeneralInfoBuilderSection
+            generalInfo={cvData.generalInfo}
+            handleChange={(data) => handleChange('generalInfo', data)}
+            handleSubmit={() => handleSubmit('generalInfo')}
+            handleRemove={() => handleRemove('generalInfo')}
+          />
+        </Accordion>
       </aside>
       <main>
-        <GeneralInfoSection {...generalInfo}></GeneralInfoSection>
+        <GeneralInfoSection {...cvData.generalInfo} />
       </main>
     </>
   );
