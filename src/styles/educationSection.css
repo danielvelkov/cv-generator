@@ -1,0 +1,10 @@
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: max-content;
+}
+
+h3 {
+  margin: 0;
+}

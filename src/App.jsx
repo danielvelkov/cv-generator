@@ -5,6 +5,7 @@ import Card from './components/card';
 import GeneralInfoSection from './components/CVsections/generalInfoSection';
 import GeneralInfoBuilderSection from './components/builderSections/generalInfoBuilderSection';
 import Accordion from './components/accordion';
+import EducationSection from './components/CVsections/educationSection';
 
 const InputSectionTypes = {
   GeneralInfo: 'GeneralInfo',
@@ -15,14 +16,18 @@ const InputSectionTypes = {
 function App() {
   const [cvData, setCvData] = useState({
     generalInfo: { ...johnDoe.generalInfo },
-    education: [],
+    education: [...johnDoe.education],
     work: [],
   });
 
   const [activeSectionId, setActiveSectionId] = useState(undefined);
 
   const generateDefaultCV = () => {
-    setCvData((prev) => ({ ...prev, generalInfo: johnDoe.generalInfo }));
+    setCvData((prev) => ({
+      ...prev,
+      generalInfo: johnDoe.generalInfo,
+      education: johnDoe.education,
+    }));
   };
 
   const handleSelect = (id) => {
@@ -75,6 +80,7 @@ function App() {
       </aside>
       <main>
         <GeneralInfoSection {...cvData.generalInfo} />
+        <EducationSection education={cvData.education}></EducationSection>
       </main>
     </>
   );
