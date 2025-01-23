@@ -13,6 +13,7 @@ export const johnDoe = {
   },
   education: [
     {
+      id: 0,
       school: 'Springfield High School',
       degree: 'High School Diploma',
       from: new Date(1997, 8, 1).toJSON(),
@@ -21,6 +22,7 @@ export const johnDoe = {
       state: 'IL',
     },
     {
+      id: 1,
       school: 'State University',
       degree: 'Bachelors',
       from: new Date(2001, 8, 25).toJSON(),
@@ -29,6 +31,7 @@ export const johnDoe = {
       state: 'NY',
     },
     {
+      id: 2,
       school: 'Tech Institute',
       degree: 'Masters',
       from: new Date(2006, 8, 1).toJSON(),

@@ -5,17 +5,34 @@ export default function EducationSection({ education = [] }) {
       <h2>Education</h2>
       <ul className="education-list">
         {education.map((e, index) => {
-          const yearFrom = new Date(e.from).getFullYear();
-          const yearTo = new Date(e.to).getFullYear();
+          let yearFrom = '';
+          if (e.from) yearFrom = new Date(e.from).getFullYear();
+          let yearTo = 'present';
+          if (e.to) yearTo = new Date(e.to).getFullYear();
           return (
             <li key={index}>
-              {yearFrom} - {yearTo}
-              <h3>
-                <b>
-                  {e.degree} - {e.school}
-                </b>
-              </h3>
-              <i>{e.state + ' ' + e.city}</i>
+              {yearFrom || yearTo ? (
+                <div>
+                  {yearFrom} - {yearTo}
+                </div>
+              ) : (
+                ''
+              )}
+              {e.degree ? (
+                <h3>
+                  <b>{e.degree}</b>
+                </h3>
+              ) : (
+                ''
+              )}
+              {e.school ? (
+                <h4>
+                  <b>{e.school}</b>
+                </h4>
+              ) : (
+                ''
+              )}
+              {e.state || e.city ? <i>{e.state + ' ' + e.city}</i> : ''}
               <hr></hr>
             </li>
           );

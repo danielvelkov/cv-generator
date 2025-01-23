@@ -9,7 +9,7 @@ export default function Accordion({
 }) {
   const id = crypto.randomUUID();
   return (
-    <div className="card accordion">
+    <div className="accordion">
       <input
         id={id}
         type="checkbox"

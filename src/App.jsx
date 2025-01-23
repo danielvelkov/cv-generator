@@ -6,6 +6,7 @@ import GeneralInfoSection from './components/CVsections/generalInfoSection';
 import GeneralInfoBuilderSection from './components/builderSections/generalInfoBuilderSection';
 import Accordion from './components/accordion';
 import EducationSection from './components/CVsections/educationSection';
+import EducationBuilderSection from './components/builderSections/educationBuilderSection';
 
 const InputSectionTypes = {
   GeneralInfo: 'GeneralInfo',
@@ -41,6 +42,31 @@ function App() {
     }));
   };
 
+  const handleChangeForElement = (section, id, data) => {
+    const copy = cvData[section].map((c) => {
+      if (id === c.id) return { ...c, [data.target.name]: data.target.value };
+      else return c;
+    });
+    setCvData((prev) => ({
+      ...prev,
+      [section]: copy,
+    }));
+  };
+
+  const handleAddElement = (section, element) => {
+    setCvData((prev) => ({
+      ...prev,
+      [section]: [...prev[section], { ...element }],
+    }));
+  };
+
+  const handleRemoveElement = (section, id) => {
+    setCvData((prev) => ({
+      ...prev,
+      [section]: prev[section].filter((e) => e.id !== id),
+    }));
+  };
+
   const handleSubmit = (section) => {
     console.log(cvData[section]);
   };
@@ -65,18 +91,38 @@ function App() {
           </p>
           <button onClick={generateDefaultCV}>Generate example CV</button>
         </Card>
-        <Accordion
-          title="General Info"
-          handleSelect={() => handleSelect(InputSectionTypes.GeneralInfo)}
-          isExpanded={activeSectionId === InputSectionTypes.GeneralInfo}
-        >
-          <GeneralInfoBuilderSection
-            generalInfo={cvData.generalInfo}
-            handleChange={(data) => handleChange('generalInfo', data)}
-            handleSubmit={() => handleSubmit('generalInfo')}
-            handleRemove={() => handleRemove('generalInfo')}
-          />
-        </Accordion>
+        <Card>
+          <Accordion
+            title="General Info"
+            handleSelect={() => handleSelect(InputSectionTypes.GeneralInfo)}
+            isExpanded={activeSectionId === InputSectionTypes.GeneralInfo}
+          >
+            <GeneralInfoBuilderSection
+              generalInfo={cvData.generalInfo}
+              handleChange={(data) => handleChange('generalInfo', data)}
+              handleSubmit={() => handleSubmit('generalInfo')}
+              handleRemove={() => handleRemove('generalInfo')}
+            />
+          </Accordion>
+        </Card>
+        <Card>
+          <Accordion
+            title="Education"
+            handleSelect={() => handleSelect(InputSectionTypes.Education)}
+            isExpanded={activeSectionId === InputSectionTypes.Education}
+          >
+            <EducationBuilderSection
+              education={cvData.education}
+              handleChangeForElement={(data, i) =>
+                handleChangeForElement('education', i, data)
+              }
+              handleAddElement={(element) =>
+                handleAddElement('education', element)
+              }
+              handleRemoveElement={(i) => handleRemoveElement('education', i)}
+            />
+          </Accordion>
+        </Card>
       </aside>
       <main>
         <GeneralInfoSection {...cvData.generalInfo} />
