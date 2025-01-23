@@ -40,4 +40,34 @@ export const johnDoe = {
       state: 'CA',
     },
   ],
+  work: [
+    {
+      id: 0,
+      position: 'Software Engineer',
+      company: 'Tech Solutions Inc.',
+      from: new Date(2006, 8, 1).toJSON(),
+      to: new Date(2008, 5, 15).toJSON(),
+      state: 'CA',
+      city: 'San Francisco',
+      accomplishments: [
+        'Developed and maintained web applications using JavaScript, HTML, and CSS.',
+        'Collaborated with cross-functional teams to design and implement new features.',
+        'Optimized application performance, reducing load times by 30%.',
+      ],
+    },
+    {
+      id: 1,
+      position: 'Senior Developer',
+      company: 'Innovatech Corp.',
+      from: new Date(2008, 6, 1).toJSON(),
+      to: new Date(2012, 5, 15).toJSON(),
+      state: 'NY',
+      city: 'New York',
+      accomplishments: [
+        'Led a team of developers to create scalable web applications.',
+        'Implemented RESTful APIs to enhance application functionality.',
+        'Mentored junior developers and conducted code reviews to ensure code quality.',
+      ],
+    },
+  ],
 };

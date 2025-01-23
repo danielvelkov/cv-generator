@@ -4,8 +4,6 @@ ul {
   padding: 0;
 }
 
-h1,
-h2,
 h3,
 h4 {
   margin: 0;
@@ -29,11 +27,34 @@ h4 {
 
 #root > main {
   color: black;
-  padding: 1em;
+  padding: 2em;
   background-color: white;
   flex: 2;
   display: flex;
   flex-direction: column;
   gap: 1em;
-  min-width: max(50vw, 320px);
+}
+
+main > .portfolio {
+  display: flex;
+  gap: 2em;
+}
+
+@media screen and (max-width: 480px) {
+  #root {
+    padding: 5px;
+    margin: 0;
+  }
+  main > .portfolio {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  #root {
+    flex-direction: column;
+  }
+  main > .portfolio {
+    flex-wrap: wrap;
+  }
 }

@@ -1,4 +1,3 @@
-import '../../styles/generalInfoSection.css';
 export default function GeneralInfoSection({
   firstName,
   lastName,

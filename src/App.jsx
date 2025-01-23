@@ -7,6 +7,7 @@ import GeneralInfoBuilderSection from './components/builderSections/generalInfoB
 import Accordion from './components/accordion';
 import EducationSection from './components/CVsections/educationSection';
 import EducationBuilderSection from './components/builderSections/educationBuilderSection';
+import WorkSection from './components/CVsections/workSection';
 
 const InputSectionTypes = {
   GeneralInfo: 'GeneralInfo',
@@ -18,7 +19,7 @@ function App() {
   const [cvData, setCvData] = useState({
     generalInfo: { ...johnDoe.generalInfo },
     education: [...johnDoe.education],
-    work: [],
+    work: [...johnDoe.work],
   });
 
   const [activeSectionId, setActiveSectionId] = useState(undefined);
@@ -28,6 +29,7 @@ function App() {
       ...prev,
       generalInfo: johnDoe.generalInfo,
       education: johnDoe.education,
+      work: johnDoe.work,
     }));
   };
 
@@ -100,7 +102,10 @@ function App() {
             <GeneralInfoBuilderSection
               generalInfo={cvData.generalInfo}
               handleChange={(data) => handleChange('generalInfo', data)}
-              handleSubmit={() => handleSubmit('generalInfo')}
+              handleSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit('generalInfo');
+              }}
               handleRemove={() => handleRemove('generalInfo')}
             />
           </Accordion>
@@ -126,7 +131,10 @@ function App() {
       </aside>
       <main>
         <GeneralInfoSection {...cvData.generalInfo} />
-        <EducationSection education={cvData.education}></EducationSection>
+        <div className='portfolio'>
+          <EducationSection education={cvData.education} />
+          <WorkSection work={cvData.work} />
+        </div>
       </main>
     </>
   );

@@ -1,9 +1,9 @@
-import '../../styles/educationSection.css';
+import '../../styles/displaySection.css';
 export default function EducationSection({ education = [] }) {
   return (
-    <>
+    <div>
       <h2>Education</h2>
-      <ul className="education-list">
+      <ul className="display-list">
         {education.map((e, index) => {
           let yearFrom = '';
           if (e.from) yearFrom = new Date(e.from).getFullYear();
@@ -38,6 +38,6 @@ export default function EducationSection({ education = [] }) {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }
