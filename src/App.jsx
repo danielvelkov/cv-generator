@@ -26,12 +26,11 @@ function App() {
   const [activeSectionId, setActiveSectionId] = useState(undefined);
 
   const generateDefaultCV = () => {
-    setCvData((prev) => ({
-      ...prev,
+    setCvData({
       generalInfo: johnDoe.generalInfo,
       education: johnDoe.education,
       work: johnDoe.work,
-    }));
+    });
   };
 
   const handleSelect = (id) => {
@@ -59,7 +58,7 @@ function App() {
   const handleAddElement = (section, element) => {
     setCvData((prev) => ({
       ...prev,
-      [section]: [...prev[section], { ...element }],
+      [section]: [...prev[section], element],
     }));
   };
 
@@ -119,38 +118,38 @@ function App() {
           >
             <EducationBuilderSection
               education={cvData.education}
-              handleChangeForElement={(data, i) =>
-                handleChangeForElement('education', i, data)
+              handleChangeForElement={(data, id) =>
+                handleChangeForElement('education', id, data)
               }
               handleAddElement={(element) =>
                 handleAddElement('education', element)
               }
-              handleRemoveElement={(i) => handleRemoveElement('education', i)}
+              handleRemoveElement={(id) => handleRemoveElement('education', id)}
             />
           </Accordion>
         </Card>
         <Card>
           <Accordion
             title="Work Experience"
-            handleSelect={() => handleSelect(InputSectionTypes.work)}
-            isExpanded={activeSectionId === InputSectionTypes.work}
+            handleSelect={() => handleSelect(InputSectionTypes.Work)}
+            isExpanded={activeSectionId === InputSectionTypes.Work}
           >
             <WorkInfoBuilder
               work={cvData.work}
-              handleChangeForElement={(data, i) =>
-                handleChangeForElement('work', i, data)
+              handleChangeForElement={(data, id) =>
+                handleChangeForElement('work', id, data)
               }
               handleAddElement={(element) => handleAddElement('work', element)}
-              handleRemoveElement={(i) => handleRemoveElement('work', i)}
+              handleRemoveElement={(id) => handleRemoveElement('work', id)}
             />
           </Accordion>
         </Card>
       </aside>
       <main>
         <GeneralInfoSection {...cvData.generalInfo} />
-        <div className="portfolio">
-          <EducationSection education={cvData.education} />
+        <div className="work-and-education">
           <WorkSection work={cvData.work} />
+          <EducationSection education={cvData.education} />
         </div>
       </main>
     </>

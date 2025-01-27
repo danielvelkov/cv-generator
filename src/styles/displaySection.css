@@ -1,5 +1,14 @@
 .display-list {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
+}
+
+.contact-options i {
+  margin-right: 0.5em;
+  color: #0073b1;
+}
+.contact-options a {
+  color: #0073b1;
+  text-decoration: none;
 }

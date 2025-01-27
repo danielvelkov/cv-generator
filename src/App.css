@@ -9,6 +9,12 @@ h4 {
   margin: 0;
   padding: 0;
 }
+
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 1em 0;
+}
 /* Root styling */
 #root {
   padding: 1rem 2rem;
@@ -35,9 +41,10 @@ h4 {
   gap: 1em;
 }
 
-main > .portfolio {
+main > .work-and-education {
   display: flex;
-  gap: 2em;
+  align-items: flex-start;
+  gap: 5em;
 }
 
 @media screen and (max-width: 480px) {
@@ -45,16 +52,14 @@ main > .portfolio {
     padding: 5px;
     margin: 0;
   }
-  main > .portfolio {
-    flex-wrap: wrap;
-  }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 900px) {
   #root {
     flex-direction: column;
   }
-  main > .portfolio {
+  main > .work-and-education {
     flex-wrap: wrap;
+    gap: 1em;
   }
 }
