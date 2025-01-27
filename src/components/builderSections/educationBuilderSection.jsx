@@ -131,7 +131,7 @@ export default function EducationBuilderSection({
                     />{' '}
                   </label>
                   <button onClick={() => handleRemoveElement(e.id)}>
-                    Remove <span>&#128465;</span>
+                    Remove <i className="fas fa-trash"></i>
                   </button>
                 </form>
               </Accordion>

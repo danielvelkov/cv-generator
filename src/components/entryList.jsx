@@ -51,10 +51,10 @@ const EntryList = ({ items, onAddItem, onRemoveItem, onEditItem }) => {
                   <p>{item}</p>
                   <div className="entry-actions">
                     <button onClick={() => handleEdit(index, item)}>
-                      &#9998;
+                      <i className="fas fa-pen"></i>
                     </button>
                     <button onClick={() => onRemoveItem(index)}>
-                      &#128465;
+                      <i className="fas fa-trash"></i>
                     </button>
                   </div>
                 </>

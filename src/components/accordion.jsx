@@ -19,7 +19,11 @@ export default function Accordion({
       <label className="accordion-header" htmlFor={id}>
         <h2 className="card-title">{title}</h2>
         {/* basically arrows */}
-        {isExpanded ? <span>&#11206;</span> : <span>&#11205;</span>}
+        {isExpanded ? (
+          <i className="fa fa-caret-up"></i>
+        ) : (
+          <i className="fa fa-caret-down"></i>
+        )}
       </label>
       <div className="content">{children}</div>
     </div>

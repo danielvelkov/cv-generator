@@ -171,7 +171,7 @@ export default function WorkInfoBuilder({
                     ></EntryList>
                   </label>
                   <button onClick={() => handleRemoveElement(w.id)}>
-                    Remove <span>&#128465;</span>
+                    Remove <i className="fas fa-trash"></i>
                   </button>
                 </form>
               </Accordion>
