@@ -8,6 +8,7 @@ import Accordion from './components/accordion';
 import EducationSection from './components/CVsections/educationSection';
 import EducationBuilderSection from './components/builderSections/educationBuilderSection';
 import WorkSection from './components/CVsections/workSection';
+import WorkInfoBuilder from './components/builderSections/workInfoBuilder';
 
 const InputSectionTypes = {
   GeneralInfo: 'GeneralInfo',
@@ -128,10 +129,26 @@ function App() {
             />
           </Accordion>
         </Card>
+        <Card>
+          <Accordion
+            title="Work Experience"
+            handleSelect={() => handleSelect(InputSectionTypes.work)}
+            isExpanded={activeSectionId === InputSectionTypes.work}
+          >
+            <WorkInfoBuilder
+              work={cvData.work}
+              handleChangeForElement={(data, i) =>
+                handleChangeForElement('work', i, data)
+              }
+              handleAddElement={(element) => handleAddElement('work', element)}
+              handleRemoveElement={(i) => handleRemoveElement('work', i)}
+            />
+          </Accordion>
+        </Card>
       </aside>
       <main>
         <GeneralInfoSection {...cvData.generalInfo} />
-        <div className='portfolio'>
+        <div className="portfolio">
           <EducationSection education={cvData.education} />
           <WorkSection work={cvData.work} />
         </div>
